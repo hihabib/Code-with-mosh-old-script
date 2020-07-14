@@ -27,15 +27,16 @@ var i = 0;
 function myFunc(){
 	setTimeout(function(){
 		var index = Math.floor(i/2);
-	    if (i % 2 == 0){
-	    	links[index].click();
-	    	myFunc();
-	    }else if (index < links.length){
-		    $("a.download").attr("data-x-origin-download-name", data_obj[`${links[index].id}`].getName() + " - " + $("a.download").attr("data-x-origin-download-name"));
-		    console.log( $("a.download").attr("data-x-origin-download-name"));
-		    document.querySelector("a.download").click();
+		if (i % 2 == 0){
+			links[index].click();
 			myFunc();
-	    }
+		}else if (index < links.length){
+			$("a.download").attr("data-x-origin-download-name", data_obj[`${links[index].id}`].getName() + " - " + $("a.download").attr("data-x-origin-download-name"));
+			console.log( $("a.download").attr("data-x-origin-download-name"));
+			var downloadBtn = document.querySelector("a.download");
+			if(downloadBtn != null) downloadBtn.click();
+			myFunc();
+		}
 	    ++i;
 	}, 10000);
 }
