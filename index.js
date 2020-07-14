@@ -3,6 +3,7 @@ jq.src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js";
 document.getElementsByTagName('head')[0].appendChild(jq);
 jQuery.noConflict();
 
+var start_index = 0;
 var links = $("ul.section-list a.item");
 var data_obj = {};
 $("ul.section-list a.item").each(function(i ,obj){
@@ -23,7 +24,7 @@ console.log("Lecture Map constructed");
 console.log(data_obj);
 console.log("Downloading Started");
 
-var i = 0;
+var i = start_index * 2;
 function myFunc(){
 	setTimeout(function(){
 		var index = Math.floor(i/2);
